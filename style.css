@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 12px;
+  font-family: Arial, sans-serif;
+  color: #252b34;
+  background: #f4f5f7;
+}
+
+.portfolio {
+  max-width: 1200px;
+  height: calc(100vh - 24px);
+  min-height: 560px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.8fr 1.1fr 1.1fr;
+  grid-template-areas:
+    "encabezado encabezado encabezado encabezado"
+    "verde azul azul rosa"
+    "gris gris gris rosa";
+  gap: 12px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 16px;
+  text-align: left;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px #00000015;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px #00000025;
+}
+
+.panel h2 {
+  width: 100%;
+  margin: 0 0 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #8b929b;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.panel p {
+  margin: 0;
+  line-height: 1.35;
+  font-size: 0.9rem;
+}
+
+.encabezado {
+  grid-area: encabezado;
+  align-items: center;
+  color: white;
+  background: #252b34;
+  text-align: center;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.encabezado .apellido {
+  font-size: 1.7rem;
+}
+
+.verde { grid-area: verde; }
+.azul { grid-area: azul; }
+.rosa { grid-area: rosa; }
+.gris { grid-area: gris; }
+
+.verde { background: #d9f1df; }
+.azul { background: #dceafa; }
+.rosa { background: #f8dfe7; }
+.gris { background: #e6e7e9; }
+.amarillo { background: #fff0cb; }
+.lila { background: #e9e1f5; }
+
+.panel a {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@media (max-width: 700px) {
+  .portfolio {
+    height: auto;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "encabezado" "verde" "azul" "rosa" "gris";
+  }
+  .panel { min-height: 150px; }
+}
